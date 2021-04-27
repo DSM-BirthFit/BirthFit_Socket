@@ -1,0 +1,20 @@
+server:
+  socket:
+    port:8000: 8000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_NAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+auth:
+  jwt:
+    secret: ${JWT_SECRET}
