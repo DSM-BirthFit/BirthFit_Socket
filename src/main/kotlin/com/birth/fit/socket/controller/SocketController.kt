@@ -14,5 +14,7 @@ class SocketController(
 
     @PostConstruct
     fun socket() {
+        server.addConnectListener(service::connect)
+        server.addDisconnectListener(service::disConnect)
     }
 }
