@@ -26,8 +26,8 @@ class SocketService(
         try {
             user = userRepository.findByEmail(jwtTokenProvider.getEmail(token))
                 .orElseThrow { RuntimeException() }
-            client["user"] = user!!
-            println("ConnectedId : ${client.sessionId.toString()} UserId : ${user.userId}")
+            client["user"] = user
+            println("ConnectedId : ${client.sessionId} UserId : ${user?.userId}")
         } catch (e: Exception) {
             println("유저를 찾을 수 없습니다.")
             client.disconnect()
@@ -36,5 +36,16 @@ class SocketService(
 
     fun disConnect(client: SocketIOClient) {
         println("DisconnectedId: ${client.sessionId}")
+    }
+
+    fun join(client: SocketIOClient, userEmail: String) {
+        val user: User? = client["user"]
+        if(user == null) {
+            println("유저 정보를 찾을 수 없습니다.")
+            client.disconnect()
+        }
+
+        client.joinRoom(userEmail)
+        println("join userEmail: $userEmail")
     }
 }
