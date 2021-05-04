@@ -32,7 +32,7 @@ jobs:
       run: ./gradlew test
         
     - name: Build with Gradle
-      run: ./gradlew clean build -x test'
+      run: ./gradlew clean build -x test
       
   CD:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
       run: ./gradlew test
         
     - name: Build with Gradle
-      run: ./gradlew clean build -x test'
+      run: ./gradlew clean build -x test
       
     - name: Build Docker Image
       run: docker build --tag birthfit_socket .
