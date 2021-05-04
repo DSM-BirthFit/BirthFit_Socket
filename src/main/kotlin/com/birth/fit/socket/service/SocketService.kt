@@ -48,4 +48,15 @@ class SocketService(
         client.joinRoom(userEmail)
         println("join userEmail: $userEmail")
     }
+
+    fun leave(client: SocketIOClient, userEmail: String) {
+        val user: User? = client["user"]
+        if(user == null) {
+            println("유저 정보를 찾을 수 없습니다.")
+            client.disconnect()
+        }
+
+        client.leaveRoom(userEmail)
+        println("leave userEmail: $userEmail")
+    }
 }

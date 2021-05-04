@@ -23,5 +23,12 @@ class SocketController(
                 data
             )
         }
+        server.addEventListener("leaveRoom", String::class.java
+        ) { client, data, _ ->
+            service.leave(
+                client,
+                data
+            )
+        }
     }
 }
