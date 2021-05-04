@@ -1,8 +1,6 @@
 package com.birth.fit.socket.controller
 
 import com.birth.fit.socket.service.SocketService
-import com.corundumstudio.socketio.AckRequest
-import com.corundumstudio.socketio.SocketIOClient
 import com.corundumstudio.socketio.SocketIOServer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
@@ -19,7 +17,7 @@ class SocketController(
         server.addConnectListener(service::connect)
         server.addDisconnectListener(service::disConnect)
         server.addEventListener("joinRoom", String::class.java
-        ) { client: SocketIOClient, data: String, _: AckRequest? ->
+        ) { client, data, _ ->
             service.join(
                 client,
                 data
