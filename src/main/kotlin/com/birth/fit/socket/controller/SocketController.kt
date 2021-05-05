@@ -16,19 +16,11 @@ class SocketController(
     fun socket() {
         server.addConnectListener(service::connect)
         server.addDisconnectListener(service::disConnect)
-        server.addEventListener("joinRoom", String::class.java
-        ) { client, data, _ ->
-            service.join(
-                client,
-                data
-            )
+        server.addEventListener("joinRoom", String::class.java) {
+                client, data, _ -> service.join(client, data)
         }
-        server.addEventListener("leaveRoom", String::class.java
-        ) { client, data, _ ->
-            service.leave(
-                client,
-                data
-            )
+        server.addEventListener("leaveRoom", String::class.java) {
+                client, data, _ -> service.leave(client, data)
         }
     }
 }
