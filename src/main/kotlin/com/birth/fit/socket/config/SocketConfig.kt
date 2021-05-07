@@ -12,7 +12,7 @@ import javax.annotation.PreDestroy
 class SocketConfig(
     @Value("\${server.socket.port}")
     private val port: Int,
-    @Value("\${server.socket.hostname}")
+    @Value("\${server.socket.hostname:127.0.0.1}")
     private val hostname: String,
     @Autowired @Lazy private var server: SocketIOServer
 ) {
