@@ -16,10 +16,11 @@ class SocketConfig(
 
     @Bean
     fun SocketIOServer(): SocketIOServer {
-        val configuration = com.corundumstudio.socketio.Configuration()
-        configuration.port = port
+        val config = com.corundumstudio.socketio.Configuration()
+        config.port = port
+        config.origin = "http://13.124.184.19:3000"
 
-        val server = SocketIOServer(configuration)
+        val server = SocketIOServer(config)
 
         server.start()
 
