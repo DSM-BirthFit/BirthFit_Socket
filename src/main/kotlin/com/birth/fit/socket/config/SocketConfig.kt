@@ -12,12 +12,15 @@ import javax.annotation.PreDestroy
 class SocketConfig(
     @Value("\${server.socket.port}")
     private val port: Int,
+    @Value("\${server.socket.hostname}")
+    private val hostname: String,
     @Autowired @Lazy private var server: SocketIOServer
 ) {
 
     @Bean
     fun SocketIOServer(): SocketIOServer {
         val config = com.corundumstudio.socketio.Configuration()
+        config.hostname = hostname
         config.port = port
         config.origin = "*:*"
 
