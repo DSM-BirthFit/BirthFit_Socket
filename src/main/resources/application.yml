@@ -1,6 +1,6 @@
 server:
   socket:
-    port: ${SERVER_PORT}
+    port: 3000
 
 spring:
   datasource:
