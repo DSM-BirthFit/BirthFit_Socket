@@ -9,10 +9,9 @@ import javax.annotation.PreDestroy
 @Configuration
 class SocketConfig(
     @Value("\${server.socket.port}")
-    private val port: Int
+    private val port: Int,
+    private var server: SocketIOServer
 ) {
-
-    private lateinit var server: SocketIOServer
 
     @Bean
     fun SocketIOServer(): SocketIOServer {
