@@ -18,7 +18,6 @@ class SocketConfig(
     fun SocketIOServer(): SocketIOServer {
         val config = com.corundumstudio.socketio.Configuration()
         config.port = port
-        config.origin = "*"
 
         val server = SocketIOServer(config)
 
