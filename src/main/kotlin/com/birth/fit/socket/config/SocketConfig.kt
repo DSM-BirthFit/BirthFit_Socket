@@ -18,7 +18,6 @@ class SocketConfig(
     fun SocketIOServer(): SocketIOServer {
         val config = com.corundumstudio.socketio.Configuration()
         config.port = port
-        config.origin = "http://13.124.184.19:3000"
 
         val server = SocketIOServer(config)
 
