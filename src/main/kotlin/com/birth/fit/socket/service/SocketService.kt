@@ -16,7 +16,7 @@ class SocketService(
 ) {
 
     fun connect(client: SocketIOClient) {
-        val token = client.handshakeData.urlParams["token"].toString()
+        val token = client.handshakeData.getSingleUrlParam("token")
         if(!jwtTokenProvider.validationToken(token)) {
             println("토큰이 유효하지 않습니다.")
             client.disconnect()
