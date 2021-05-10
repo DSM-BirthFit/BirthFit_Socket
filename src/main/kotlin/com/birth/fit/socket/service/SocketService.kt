@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class SocketService(
-    @Autowired private val server: SocketIOServer,
     @Autowired private val userRepository: UserRepository,
     @Autowired private val jwtTokenProvider: JwtTokenProvider
 ) {
+
+    @Autowired
+    private lateinit var server: SocketIOServer
 
     fun connect(client: SocketIOClient) {
         val token = client.handshakeData.getSingleUrlParam("token")

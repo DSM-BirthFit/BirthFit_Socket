@@ -11,15 +11,16 @@ import javax.annotation.PreDestroy
 @Configuration
 class SocketConfig(
     @Value("\${server.socket.port}")
-    private val port: Int,
-    @Autowired @Lazy private var server: SocketIOServer
+    private val port: Int
 ) {
+
+    @Autowired
+    private lateinit var server: SocketIOServer
 
     @Bean
     fun SocketIOServer(): SocketIOServer {
         val config = com.corundumstudio.socketio.Configuration()
         config.port = port
-        config.origin = "*:*"
 
         val server = SocketIOServer(config)
 
