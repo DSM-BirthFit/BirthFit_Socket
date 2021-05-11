@@ -14,25 +14,24 @@ class SocketConfig(
     private val port: Int
 ) {
 
-    @Autowired @Lazy
-    private lateinit var server: SocketIOServer
-
     @Bean
-    fun SocketIOServer(): SocketIOServer {
+    fun socketConfig(): com.corundumstudio.socketio.Configuration {
         val config = com.corundumstudio.socketio.Configuration()
         config.port = port
 
-        val server = SocketIOServer(config)
+        return config
+    }
 
+    @Bean
+    fun socketIOServer(): SocketIOServer {
+        val server = SocketIOServer(socketConfig())
         server.start()
-
-        this.server = server
 
         return server
     }
 
     @PreDestroy
     fun stop() {
-        server.stop()
+        socketIOServer().stop()
     }
 }
