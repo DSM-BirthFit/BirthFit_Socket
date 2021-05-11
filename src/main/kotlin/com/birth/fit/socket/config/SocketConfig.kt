@@ -14,7 +14,7 @@ class SocketConfig(
     private val port: Int
 ) {
 
-    @Autowired
+    @Autowired @Lazy
     private lateinit var server: SocketIOServer
 
     @Bean
