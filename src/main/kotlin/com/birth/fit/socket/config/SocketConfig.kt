@@ -1,11 +1,9 @@
 package com.birth.fit.socket.config
 
 import com.corundumstudio.socketio.SocketIOServer
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Lazy
 import javax.annotation.PreDestroy
 
 @Configuration
@@ -15,7 +13,7 @@ class SocketConfig(
 ) {
 
     @Bean
-    fun socketConfig(): com.corundumstudio.socketio.Configuration {
+    fun socketIOConfig(): com.corundumstudio.socketio.Configuration {
         val config = com.corundumstudio.socketio.Configuration()
         config.port = port
 
@@ -24,7 +22,7 @@ class SocketConfig(
 
     @Bean
     fun socketIOServer(): SocketIOServer {
-        val server = SocketIOServer(socketConfig())
+        val server = SocketIOServer(socketIOConfig())
         server.start()
 
         return server
